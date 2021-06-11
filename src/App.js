@@ -92,9 +92,9 @@ function App() {
 
   const classes = useStyles();
 
-  const availableRoles = ['Design', 'Tech', 'Business', 'Student']
-  const availableCountries = ['Belgium', 'Denmark', 'Estonia', 'Finland', 'Germany', 'Sweden']
-  const availableLocations = ['Leuven', 'Liège', 'Copenhagen', 'Tallinn', 'Helsinki', 'Lahti', 'Oulu', 'Tampere', 'Turku', 'Berlin', 'Munich', 'Gothenburg', 'Stockholm']
+  const availableRoles = ['Design', 'Tech', 'Business', 'Student'].sort()
+  const availableCountries = ['Belgium', 'Denmark', 'Estonia', 'Finland', 'Germany', 'Sweden'].sort()
+  const availableLocations = ['Leuven', 'Liège', 'Copenhagen', 'Tallinn', 'Helsinki', 'Lahti', 'Oulu', 'Tampere', 'Turku', 'Berlin', 'Munich', 'Gothenburg', 'Stockholm'].sort()
 
   const [json, setJson] = useState({
     lang: 'fi',
