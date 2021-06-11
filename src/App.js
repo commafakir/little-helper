@@ -16,6 +16,7 @@ import Input from '@material-ui/core/Input';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -36,11 +37,23 @@ const useStyles = makeStyles((theme) => ({
   },
   formControl: {
     margin: theme.spacing(1),
-    minWidth: '30%',
+    marginBottom: theme.spacing(4),
+    minWidth: '31%',
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
+  card: {
+    marginBottom: theme.spacing(2),
+    backgroundColor: '#efefef',
+  },
+  json: {
+    fontFamily: 'monospace',
+  },
+  jsonPaper: {
+    marginTop: theme.spacing(4),
+    padding: theme.spacing(2),
+  }
 }));
 
 function getStyles(value, values, theme) {
@@ -101,13 +114,17 @@ function App() {
       <CssBaseline />
       <div className={classes.root}>
         <Container>
-          <Typography variant="heading1" component="h1">
-            Little Helper
-          </Typography>
-          <Typography variant="body1" component="p">
-            It just makes JSON.
-          </Typography>
-          <Card className={classes.root}>
+        <Card className={classes.card}>
+            <CardContent>
+              <Typography variant="h3" component="h1">
+                Little Helper
+              </Typography>
+              <Typography variant="caption" display="block" gutterBottom>
+                It just makes JSON. Reactive.
+              </Typography>
+            </CardContent>
+          </Card>
+          <Card className={classes.card}>
             <CardContent>
               <FormControl fullWidth className={classes.formControl} component="fieldset">
                 <FormLabel component="legend">Language</FormLabel>
@@ -120,12 +137,9 @@ function App() {
               <MultiSelect values={availableRoles} selected={json.role} handler={handleChange('role')} label="Role"/>
               <MultiSelect values={availableCountries} selected={json.country} handler={handleChange('country')} label="Country"/>
               <MultiSelect values={availableLocations} selected={json.location} handler={handleChange('location')} label="Location"/>
-            </CardContent>
-          </Card>
-          <Card className={classes.root}>
-            <CardContent>
+          
               <FormControl className={classes.formControl} fullWidth component="fieldset">
-              <TextField value={json.image} id="image" fullWidth label="Image URL" variant="outlined" onChange={handleChange('image')} />
+                <TextField value={json.image} id="image" fullWidth label="Image URL" variant="outlined" onChange={handleChange('image')} />
               </FormControl>
               <FormControl className={classes.formControl} fullWidth component="fieldset">
                 <TextField value={json.intro} id="intro" multiline rows={5} fullWidth label="Intro" variant="outlined" onChange={handleChange('intro')} />
@@ -134,13 +148,11 @@ function App() {
           </Card>
       
             
-          <Card className={classes.root}>
-            <CardContent>
-              <Typography variant="body2" component="pre">
-                { JSON.stringify(json, null, 2) }
-              </Typography>
-            </CardContent>
-          </Card>
+          <Paper className={classes.jsonPaper}  elevation={10}>
+            <Typography className={classes.json} variant="body1" component="pre">
+              { JSON.stringify(json, null, 2) }
+            </Typography>
+          </Paper>
       
         </Container>
       </div>
