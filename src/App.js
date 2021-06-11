@@ -31,6 +31,7 @@ const MenuProps = {
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    marginTop: theme.spacing(4),
     '& > *': {
       margin: theme.spacing(1),
     },
@@ -45,7 +46,6 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     marginBottom: theme.spacing(2),
-    backgroundColor: '#efefef',
   },
   json: {
     fontFamily: 'monospace',
@@ -69,7 +69,7 @@ const MultiSelect = ({values, selected, handler, label}) => {
   const classes = useStyles();
   const theme = useTheme();
   return (
-    <FormControl className={classes.formControl} component="fieldset">
+    <FormControl className={classes.formControl} variant="filled">
       <InputLabel id={label}>{label}</InputLabel>
       <Select
         multiple
@@ -112,9 +112,9 @@ function App() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <div className={classes.root}>
-        <Container>
-        <Card className={classes.card}>
+
+      <Container className={classes.root}>
+        <Card className={classes.card} style={{ backgroundColor: '#efefef'}}>
             <CardContent>
               <Typography variant="h3" component="h1">
                 Little Helper
@@ -134,6 +134,7 @@ function App() {
                   <FormControlLabel value="sv" control={<Radio />} label="Swedish" />
                 </RadioGroup>
               </FormControl>
+
               <MultiSelect values={availableRoles} selected={json.role} handler={handleChange('role')} label="Role"/>
               <MultiSelect values={availableCountries} selected={json.country} handler={handleChange('country')} label="Country"/>
               <MultiSelect values={availableLocations} selected={json.location} handler={handleChange('location')} label="Location"/>
@@ -146,7 +147,6 @@ function App() {
               </FormControl>
             </CardContent>
           </Card>
-      
             
           <Paper className={classes.jsonPaper}  elevation={10}>
             <Typography className={classes.json} variant="body1" component="pre">
@@ -155,7 +155,7 @@ function App() {
           </Paper>
       
         </Container>
-      </div>
+
     </React.Fragment>
   );
 }
