@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
   },
   card: {
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(1),
   },
   json: {
     fontFamily: 'monospace',
@@ -114,7 +114,7 @@ function App() {
       <CssBaseline />
 
       <Container className={classes.root}>
-        <Card className={classes.card} style={{ backgroundColor: '#efefef'}}>
+        <Card className={classes.card} style={{ backgroundColor: '#efefef' }}>
             <CardContent>
               <Typography variant="h3" component="h1">
                 Little Helper
@@ -124,7 +124,7 @@ function App() {
               </Typography>
             </CardContent>
           </Card>
-          <Card className={classes.card}>
+          <Card className={classes.card} style={{ border: "none", boxShadow: "none", backgroundColor: 'inherit' }}>
             <CardContent>
               <FormControl fullWidth className={classes.formControl} component="fieldset">
                 <FormLabel component="legend">Language</FormLabel>
